@@ -1,5 +1,6 @@
 # Running Sysbox Using a Managed GKE Cluster
 
+![sample-image](photos/sysbox-diagram.png)
 
 ### What is Sysbox?
 Sysbox is an open-source container runtime designed to enhance container isolation and enable containers to run workloads traditionally reserved for virtual machines. Originally developed by Nestybox and later acquired by Docker in 2022, Sysbox functions as a specialized "runc" that integrates seamlessly with existing container managers like Docker and Kubernetes.
@@ -14,7 +15,8 @@ Sysbox coexists with other container runtimes on the same host, allowing users t
 ### Environment Preparation 
 
 To ensure compatibility, you’ll need to modify key Kubernetes settings within your cluster configuration. Below are the necessary adjustments when deploying your GKE cluster via Terraform.
-Node Operating System Requirements
+
+##### Node Operating System Requirements
 
 The image type for your GKE nodes must be set to one of the following Ubuntu-based operating systems:
 
@@ -300,6 +302,8 @@ ossyNMMMNyMMhsssssssssssssshmmmhssssssso
 root@carolina-755576cb85-5g4vf:/#
 
 ```
+
+![final-output](photos/proof-of-work.png)
 
 And that's it. This deployment was fairly simple to execute and configure. Read official documentation for other deployments and guidelines:
 
