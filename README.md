@@ -1,7 +1,7 @@
 # Running Sysbox With An Unmanaged GKE Cluster
 
 
-## What is Sysbox?
+### What is Sysbox?
 Sysbox is an open-source container runtime designed to enhance container isolation and enable containers to run workloads traditionally reserved for virtual machines. Originally developed by Nestybox and later acquired by Docker in 2022, Sysbox functions as a specialized "runc" that integrates seamlessly with existing container managers like Docker and Kubernetes.
 
 Unlike standard containers, Sysbox enforces strict isolation by leveraging Linux user namespaces, virtualizing key system directories such as procfs and sysfs, and hiding host system details within the container. This allows workloads to run securely without requiring privileged mode or complex configurations. With Sysbox, system-level applications like systemd, Docker, Kubernetes, K3s, and buildx can run inside containers without modifications, rootless variants, or special volume mounts.
