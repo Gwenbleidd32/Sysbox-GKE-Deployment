@@ -1,4 +1,4 @@
-# Running Sysbox With An Unmanaged GKE Cluster
+# Running Sysbox Using a Managed GKE Cluster
 
 
 ### What is Sysbox?
