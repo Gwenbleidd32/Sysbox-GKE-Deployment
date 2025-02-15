@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carolina
+  namespace: default
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+spec:
+  replicas: 3  # Adjust the number of pods
+  selector:
+    matchLabels:
+      app: carolina
+  template:
+    metadata:
+      labels:
+        app: carolina
+      annotations:
+        io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+    spec:
+      runtimeClassName: sysbox-runc
+      restartPolicy: Always      
+      containers:
+      - name: ubu-bio-systemd-docker
+        image: registry.nestybox.com/nestybox/ubuntu-bionic-systemd-docker
+        command: ["/sbin/init"]
+        volumeMounts:          
+        - name: orbiter-module
+          mountPath: /pvc/
+      volumes:
+      - name: orbiter-module
+        persistentVolumeClaim:
+          claimName: orbiter-module
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: orbiter-module
+  namespace: default
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: "bordeaux"
