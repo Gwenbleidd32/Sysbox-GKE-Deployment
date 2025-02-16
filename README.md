@@ -142,10 +142,10 @@ runtimeclass.node.k8s.io/sysbox-runc created
 Sysbox can deploy container images that act as full blown VMs within the pods of your cluster.
 The below steps and manifest describe the necessary YAML components and an example of a successful execution. 
 ##### Required Traits
-- Annotations:
-- runtime class to specify the container runtime of the deployment
-- Sysbox operating system image: 
-- Initialization command:
+- Annotations: `io.kubernetes.cri-o.userns-mode: "auto:size=65536"`
+- runtime class: `runtimeClassName: sysbox-runc`
+- Sysbox operating system image: `image: registry.nestybox.com/nestybox/ubuntu-bionic-systemd-docker`
+- Initialization command: `command: ["/sbin/init"]`
 
 Please see the below YAML for proper usage and a working example of a basic deployment:
 ```yaml
